@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cracker Shop Order Form</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+        th { background-color: #f2f2f2; }
+        .customer-details { margin-bottom: 20px; }
+        .customer-details label { display: inline-block; width: 120px; font-weight: bold; }
+        .customer-details input, .customer-details textarea {
+            width: 300px; padding: 5px; margin-bottom: 10px;
+        }
+        .totals {
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        #submit-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #submit-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h2>Cracker Shop Order Form</h2>
+    <form id="order-form">
+
+        <!-- Customer Details Section -->
+        <div class="customer-details">
+            <label for="customer_name">Customer Name:</label>
+            <input type="text" id="customer_name" name="customer_name" required><br>
+
+            <label for="phone_number">Phone Number:</label>
+            <input type="text" id="phone_number" name="phone_number" required><br>
+
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" rows="3" required></textarea>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Content</th>
+                    <th>Rate / Qty</th>
+                    <th>Discount</th>
+                    <th>Final Rate</th>
+                    <th>Quantity</th>
+                    <th>Net Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2 3/4 'Kuruvi </td>
+                    <td>1Pkt </td>
+                    <td>80</td>
+                    <td>72</td>
+                    <td>8</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="8" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>3 1/2 Lakshmi </td>
+                    <td>1Pkt </td>
+                    <td>160</td>
+                    <td>144</td>
+                    <td>16</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="16" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>4' Lakshmi </td>
+                    <td>1Pkt </td>
+                    <td>220</td>
+                    <td>198</td>
+                    <td>22</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="22" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>4' Lakshmi Deluxe </td>
+                    <td>1Pkt </td>
+                    <td>300</td>
+                    <td>270</td>
+                    <td>30</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="30" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>4'Gold Lakshmi Deluxe </td>
+                    <td>1Pkt </td>
+                    <td>320</td>
+                    <td>288</td>
+                    <td>32</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="32" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>4' Hulk </td>
+                    <td>1Pkt </td>
+                    <td>240</td>
+                    <td>216</td>
+                    <td>24</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="24" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>5' Hulk </td>
+                    <td>1Pkt </td>
+                    <td>490</td>
+                    <td>441</td>
+                    <td>49</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="49" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Bullet </td>
+                    <td>1Box </td>
+                    <td>500</td>
+                    <td>450</td>
+                    <td>50</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="50" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Hydro Bomb </td>
+                    <td>1Box </td>
+                    <td>800</td>
+                    <td>720</td>
+                    <td>80</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="80" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>King Kong </td>
+                    <td>1Box </td>
+                    <td>900</td>
+                    <td>810</td>
+                    <td>90</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="90" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Classic Bomb </td>
+                    <td>1Box </td>
+                    <td>1000</td>
+                    <td>900</td>
+                    <td>100</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="100" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Jurrasic </td>
+                    <td>1Box </td>
+                    <td>1700</td>
+                    <td>1530</td>
+                    <td>170</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="170" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Digital Bomb Heavy </td>
+                    <td>1Box </td>
+                    <td>2400</td>
+                    <td>2160</td>
+                    <td>240</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="240" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Paper Bomb 1/4 kg </td>
+                    <td>1Box </td>
+                    <td>500</td>
+                    <td>450</td>
+                    <td>50</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="50" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Paper Bomb 1/2 kg </td>
+                    <td>1Box </td>
+                    <td>900</td>
+                    <td>810</td>
+                    <td>90</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="90" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>paper bomb 1 kg </td>
+                    <td>1Box </td>
+                    <td>1800</td>
+                    <td>1620</td>
+                    <td>180</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="180" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Money Bank bomb </td>
+                    <td>1box </td>
+                    <td>1900</td>
+                    <td>1710</td>
+                    <td>190</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="190" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Gold Bijilli [50 Pcs] </td>
+                    <td>1 PKT </td>
+                    <td>180</td>
+                    <td>162</td>
+                    <td>18</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="18" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Gold Bijilli [100 Pcs] </td>
+                    <td>1 PKT </td>
+                    <td>350</td>
+                    <td>315</td>
+                    <td>35</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="35" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Stripped Bijilli [100 Pcs] </td>
+                    <td>1 PKT </td>
+                    <td>380</td>
+                    <td>342</td>
+                    <td>38</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="38" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Ground Chakkar Big  </td>
+                    <td>1Box </td>
+                    <td>380</td>
+                    <td>342</td>
+                    <td>38</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="38" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Ground Chakkar special  </td>
+                    <td>1Box </td>
+                    <td>560</td>
+                    <td>504</td>
+                    <td>56</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="56" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Ground Chakkar Deluxe  </td>
+                    <td>1Box </td>
+                    <td>1200</td>
+                    <td>1080</td>
+                    <td>120</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="120" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Disco Chakkar 2 Side Rotation </td>
+                    <td>1Box </td>
+                    <td>700</td>
+                    <td>630</td>
+                    <td>70</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="70" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Flower Pots Small </td>
+                    <td>1Box </td>
+                    <td>500</td>
+                    <td>450</td>
+                    <td>50</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="50" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Flower Pots Big </td>
+                    <td>1Box </td>
+                    <td>760</td>
+                    <td>684</td>
+                    <td>76</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="76" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Flower Pots Special </td>
+                    <td>1Box </td>
+                    <td>800</td>
+                    <td>720</td>
+                    <td>80</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="80" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Flower Pots Asoka </td>
+                    <td>1Box </td>
+                    <td>1200</td>
+                    <td>1080</td>
+                    <td>120</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="120" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Colour Koti </td>
+                    <td>1Box </td>
+                    <td>2100</td>
+                    <td>1890</td>
+                    <td>210</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="210" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Colour Koti Deluxe </td>
+                    <td>1Box </td>
+                    <td>2800</td>
+                    <td>2520</td>
+                    <td>280</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="280" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Tricolour Fountain </td>
+                    <td>1Box </td>
+                    <td>2400</td>
+                    <td>2160</td>
+                    <td>240</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="240" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>1 1/2' Twinkling Star </td>
+                    <td>1Box </td>
+                    <td>240</td>
+                    <td>216</td>
+                    <td>24</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="24" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>4' Twinkling Star </td>
+                    <td>1Box </td>
+                    <td>700</td>
+                    <td>630</td>
+                    <td>70</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="70" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>12'' Premium Pencil </td>
+                    <td>1Box </td>
+                    <td>800</td>
+                    <td>720</td>
+                    <td>80</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="80" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Rocket Bomb </td>
+                    <td>1Box </td>
+                    <td>360</td>
+                    <td>324</td>
+                    <td>36</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="36" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>2 sound Rocket </td>
+                    <td>1Box </td>
+                    <td>1100</td>
+                    <td>990</td>
+                    <td>110</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="110" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>3 Sound Rocket </td>
+                    <td>1Box </td>
+                    <td>1900</td>
+                    <td>1710</td>
+                    <td>190</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="190" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Lunik Rocket </td>
+                    <td>1Box </td>
+                    <td>1100</td>
+                    <td>990</td>
+                    <td>110</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="110" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Whistle Rocket </td>
+                    <td>1Box </td>
+                    <td>1400</td>
+                    <td>1260</td>
+                    <td>140</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="140" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Colour Matches -Small </td>
+                    <td>1Pkt </td>
+                    <td>250</td>
+                    <td>225</td>
+                    <td>25</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="25" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Colour Matches -Big </td>
+                    <td>1Pkt </td>
+                    <td>350</td>
+                    <td>315</td>
+                    <td>35</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="35" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>15CM RED Sparklers </td>
+                    <td>1Box </td>
+                    <td>500</td>
+                    <td>450</td>
+                    <td>50</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="50" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>15CM GREEN Sparklers </td>
+                    <td>1Box </td>
+                    <td>530</td>
+                    <td>477</td>
+                    <td>53</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="53" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>15CM COLOUR Sparklers </td>
+                    <td>1Box </td>
+                    <td>500</td>
+                    <td>450</td>
+                    <td>50</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="50" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>15CM ELECTRIC Sparklers </td>
+                    <td>1Box </td>
+                    <td>480</td>
+                    <td>432</td>
+                    <td>48</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="48" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>15CM Crackling Sparklers </td>
+                    <td>1Box </td>
+                    <td>500</td>
+                    <td>450</td>
+                    <td>50</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="50" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>30CM RED Sparklers </td>
+                    <td>1Box </td>
+                    <td>550</td>
+                    <td>495</td>
+                    <td>55</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="55" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>30CM GREEN Sparklers </td>
+                    <td>1Box </td>
+                    <td>530</td>
+                    <td>477</td>
+                    <td>53</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="53" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>30CM COLOUR Sparklers </td>
+                    <td>1Box </td>
+                    <td>500</td>
+                    <td>450</td>
+                    <td>50</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="50" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>30CM ELECTRIC Sparklers </td>
+                    <td>1Box </td>
+                    <td>480</td>
+                    <td>432</td>
+                    <td>48</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="48" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>30 CM Crackling Sparklers </td>
+                    <td>1Box </td>
+                    <td>500</td>
+                    <td>450</td>
+                    <td>50</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="50" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>50CM COLOUR Sparklers </td>
+                    <td>1Box </td>
+                    <td>2100</td>
+                    <td>1890</td>
+                    <td>210</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="210" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>50CM ELECTRIC Sparklers </td>
+                    <td>1Box </td>
+                    <td>2000</td>
+                    <td>1800</td>
+                    <td>200</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="200" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>50 CM Crackling Sparklers </td>
+                    <td>1Box </td>
+                    <td>2000</td>
+                    <td>1800</td>
+                    <td>200</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="200" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>50 CM Green Sparklers </td>
+                    <td>1Box </td>
+                    <td>2100</td>
+                    <td>1890</td>
+                    <td>210</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="210" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>50CM Antique Collection  3 in 1 </td>
+                    <td>1Box </td>
+                    <td>2100</td>
+                    <td>1890</td>
+                    <td>210</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="210" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>30 CM Rotating Sparklers </td>
+                    <td>1Box </td>
+                    <td>2000</td>
+                    <td>1800</td>
+                    <td>200</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="200" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Roll Cap </td>
+                    <td>1Box </td>
+                    <td>1000</td>
+                    <td>900</td>
+                    <td>100</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="100" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Snake Egg DLX (Bundle) </td>
+                    <td>1Pkt </td>
+                    <td>500</td>
+                    <td>450</td>
+                    <td>50</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="50" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Photo Flash </td>
+                    <td>1Box </td>
+                    <td>700</td>
+                    <td>630</td>
+                    <td>70</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="70" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Smoke stick </td>
+                    <td>1Box </td>
+                    <td>1290</td>
+                    <td>1161</td>
+                    <td>129</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="129" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Money Bank Big </td>
+                    <td>1Box </td>
+                    <td>1900</td>
+                    <td>1710</td>
+                    <td>190</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="190" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>1 1/2 Fanta Shower </td>
+                    <td>1Box </td>
+                    <td>1100</td>
+                    <td>990</td>
+                    <td>110</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="110" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>2 1/2 Diet Coke  Shower </td>
+                    <td>1Box </td>
+                    <td>1300</td>
+                    <td>1170</td>
+                    <td>130</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="130" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>3 Jelly pop Shower </td>
+                    <td>1Box </td>
+                    <td>1800</td>
+                    <td>1620</td>
+                    <td>180</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="180" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Spinner </td>
+                    <td>1 Box </td>
+                    <td>1400</td>
+                    <td>1260</td>
+                    <td>140</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="140" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Kitkat </td>
+                    <td>1Box </td>
+                    <td>260</td>
+                    <td>234</td>
+                    <td>26</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="26" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Maccan Shower </td>
+                    <td>1Box </td>
+                    <td>1200</td>
+                    <td>1080</td>
+                    <td>120</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="120" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Stylish Guitar </td>
+                    <td>1Pc </td>
+                    <td>2200</td>
+                    <td>1980</td>
+                    <td>220</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="220" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Bamparam </td>
+                    <td>1 Box </td>
+                    <td>1400</td>
+                    <td>1260</td>
+                    <td>140</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="140" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Sachin MRF Bat </td>
+                    <td>1Pc </td>
+                    <td>1650</td>
+                    <td>1485</td>
+                    <td>165</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="165" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Sword </td>
+                    <td>1Pc </td>
+                    <td>1650</td>
+                    <td>1485</td>
+                    <td>165</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="165" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Hanuman Gadhai </td>
+                    <td>1Pc </td>
+                    <td>2100</td>
+                    <td>1890</td>
+                    <td>210</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="210" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Cone Ice cream (2 Piece) </td>
+                    <td>1Pc </td>
+                    <td>1900</td>
+                    <td>1710</td>
+                    <td>190</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="190" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Helicopter </td>
+                    <td>1 Box </td>
+                    <td>1000</td>
+                    <td>900</td>
+                    <td>100</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="100" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Cooling Tin beverages </td>
+                    <td>1Pc </td>
+                    <td>900</td>
+                    <td>810</td>
+                    <td>90</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="90" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Peacock Feather </td>
+                    <td>1Pc </td>
+                    <td>950</td>
+                    <td>855</td>
+                    <td>95</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="95" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Mega Peacock Multicolour </td>
+                    <td>1Pc </td>
+                    <td>1800</td>
+                    <td>1620</td>
+                    <td>180</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="180" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Bada Mega Peacock Crackling </td>
+                    <td>1Pc </td>
+                    <td>3800</td>
+                    <td>3420</td>
+                    <td>380</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="380" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>Penta Plus ( 5 pcs) </td>
+                    <td>1BOX </td>
+                    <td>1600</td>
+                    <td>1440</td>
+                    <td>160</td>
+                    <td><input type="number" name="qty" min="0" value="0" data-rate="160" onchange="calculateTotals()"></td>
+                    <td class="net-price">0.00</td>
+                </tr>
+                <tr>
+                    <td>7 Shot </td>
+            <td>1BOX </td>
+            <td>1200</td>
+            <td>1080</td>
+            <td>120</td>
+            <td><input type="number" name="qty" min="0" value="0" data-rate="120" onchange="calculateTotals()"></td>
+            <td class="net-price">0.00</td>
+        </tr>
+        <tr>
+            <td>12 SHOTS Rider </td>
+            <td>1BOX </td>
+            <td>1500</td>
+            <td>1350</td>
+            <td>150</td>
+            <td><input type="number" name="qty" min="0" value="0" data-rate="150" onchange="calculateTotals()"></td>
+            <td class="net-price">0.00</td>
+        </tr>
+        <tr>
+            <td>12 SHOTS Red and Green </td>
+            <td>1BOX </td>
+            <td>1400</td>
+            <td>1260</td>
+            <td>140</td>
+            <td><input type="number" name="qty" min="0" value="0" data-rate="140" onchange="calculateTotals()"></td>
+            <td class="net-price">0.00</td>
+        </tr>
+        <tr>
+            <td>25 Jolly Shots </td>
+            <td>1BOX </td>
+            <td>3000</td>
+            <td>2700</td>
+            <td>300</td>
+            <td><input type="number" name="qty" min="0" value="0" data-rate="300" onchange="calculateTotals()"></td>
+            <td class="net-price">0.00</td>
+        </tr>
+        <tr>
+            <td>30 Multi colour  SHOT </td>
+            <td>1BOX </td>
+            <td>3800</td>
+            <td>3420</td>
+            <td>380</td>
+            <td><input type="number" name="qty" min="0" value="0" data-rate="380" onchange="calculateTotals()"></td>
+            <td class="net-price">0.00</td>
+        </tr>
+        <tr>
+            <td>60 Multi colour   SHOT </td>
+            <td>1BOX </td>
+            <td>7500</td>
+            <td>6750</td>
+            <td>750</td>
+            <td><input type="number" name="qty" min="0" value="0" data-rate="750" onchange="calculateTotals()"></td>
+            <td class="net-price">0.00</td>
+        </tr>
+        <tr>
+            <td>60 Multi colour shot Premium </td>
+            <td>1BOX </td>
+            <td>8500</td>
+            <td>7650</td>
+            <td>850</td>
+            <td><input type="number" name="qty" min="0" value="0" data-rate="850" onchange="calculateTotals()"></td>
+            <td class="net-price">0.00</td>
+        </tr>
+        <tr>
+            <td>120 MC SHOT </td>
+            <td>1BOX </td>
+            <td>15000</td>
+            <td>13500</td>
+            <td>1500</td>
+            <td><input type="number" name="qty" min="0" value="0" data-rate="1500" onchange="calculateTotals()"></td>
+            <td class="net-price">0.00</td>
+        </tr>
+        <tr>
+            <td>240 MC SHOT </td>
+            <td>1BOX </td>
+            <td>30000</td>
+            <td>27000</td>
+            <td>3000</td>
+            <td><input type="number" name="qty" min="0" value="0" data-rate="3000" onchange="calculateTotals()"></td>
+            <td class="net-price">0.00</td>
+        </tr>
+        <tr>
+            <td>504 Shots </td>
+            <td>1BOX </td>
+            <td>52000</td>
+            <td>46800</td>
+            <td>5200</td>
+            <td><input type="number" name="qty" min="0" value="0" data-rate="5200" onchange="calculateTotals()"></td>
+            <td class="net-price">0.00</td>
+        </tr>
+        <tr>
+            <td>1' mini Pipe </td>
+            <td>1Pce </td>
+            <td>500</td>
+            <td>450</td>
+            <td>50</td>
+            <td><input type="number" name="qty" min="0" value="0" data-rate="50" onchange="calculateTotals()"></td>
+            <td class="net-price">0.00</td>
+        </tr>
+        <tr>
+            <td>2' Single Pipe </td>
+            <td>1Pce </td>
+            <td>1100</td>
+            <td>990</td>
+            <td>110</td>
+            <td><input type="number" name="qty" min="0" value="0" data-rate="110" onchange="calculateTotals()"></td>
+            <td class="net-price">0.00</td>
+        </tr>
+        <tr>
+            <td>2' Pipe ( 3 Pieces) </td>
+            <td>1Pce </td>
+            <td>2250</td>
+            <td>2025</td>
+            <td>225</td>
+            <td><input type="number" name="qty" min="0" value="0" data-rate="225" onchange="calculateTotals()"></td>
+            <td class="net-price">0.00</td>
+        </tr>
+        <tr>
+            <td>3 1/2' Single Pipe </td>
+            <td>1Pce </td>
+            <td>3200</td>
+            <td>2880</td>
+            <td>320</td>
+            <td><input type="number" name="qty" min="0" value="0" data-rate="320" onchange="calculateTotals()"></td>
+            <td class="net-price">0.00</td>
+        </tr>
+        <tr>
+            <td>4 ' (2 Pieces) SPL </td>
+            <td>1Pce </td>
+            <td>6500</td>
+            <td>5850</td>
+            <td>650</td>
+            <td><input type="number" name="qty" min="0" value="0" data-rate="650" onchange="calculateTotals()"></td>
+            <td class="net-price">0.00</td>
+        </tr>
+        <tr>
+            <td>4' SINGLE SPL </td>
+            <td>1BOX </td>
+            <td>4300</td>
+            <td>3870</td>
+            <td>430</td>
+            <td><input type="number" name="qty" min="0" value="0" data-rate="430" onchange="calculateTotals()"></td>
+            <td class="net-price">0.00</td>
+        </tr>
+        <tr>
+            <td>20 Deluxe </td>
+            <td>1Pce </td>
+            <td>350</td>
+            <td>315</td>
+            <td>35</td>
+            <td><input type="number" name="qty" min="0" value="0" data-rate="35" onchange="calculateTotals()"></td>
+            <td class="net-price">0.00</td>
+        </tr>
+        <tr>
+            <td>24 Deluxe </td>
+            <td>1Pce </td>
+            <td>600</td>
+            <td>540</td>
+            <td>60</td>
+            <td><input type="number" name="qty" min="0" value="0" data-rate="60" onchange="calculateTotals()"></td>
+            <td class="net-price">0.00</td>
+        </tr>
+        <tr>
+            <td>28 chocolate </td>
+            <td>1Pce </td>
+            <td>220</td>
+            <td>198</td>
+            <td>22</td>
+            <td><input type="number" name="qty" min="0" value="0" data-rate="22" onchange="calculateTotals()"></td>
+            <td class="net-price">0.00</td>
+        </tr>
+        <tr>
+            <td>28 Giant Double </td>
+            <td>1Pce </td>
+            <td>380</td>
+            <td>342</td>
+            <td>38</td>
+            <td><input type="number" name="qty" min="0" value="0" data-rate="38" onchange="calculateTotals()"></td>
+            <td class="net-price">0.00</td>
+        </tr>
+        <tr>
+            <td>50 DLX </td>
+            <td>1Pce </td>
+            <td>1200</td>
+            <td>1080</td>
+            <td>120</td>
+            <td><input type="number" name="qty" min="0" value="0" data-rate="120" onchange="calculateTotals()"></td>
+            <td class="net-price">0.00</td>
+        </tr>
+        <tr>
+            <td>100 wala </td>
+            <td>1Pce </td>
+            <td>500</td>
+            <td>450</td>
+            <td>50</td>
+            <td><input type="number" name="qty" min="0" value="0" data-rate="50" onchange="calculateTotals()"></td>
+            <td class="net-price">0.00</td>
+        </tr>
+        <tr>
+            <td> 1000 wala </td>
+            <td>1Pce </td>
+            <td>3000</td>
+            <td>2700</td>
+            <td>300</td>
+            <td><input type="number" name="qty" min="0" value="0" data-rate="300" onchange="calculateTotals()"></td>
+            <td class="net-price">0.00</td>
+        </tr>
+        <tr>
+            <td>  2000 wala </td>
+            <td>1Pce </td>
+            <td>6000</td>
+            <td>5400</td>
+            <td>600</td>
+            <td><input type="number" name="qty" min="0" value="0" data-rate="600" onchange="calculateTotals()"></td>
+            <td class="net-price">0.00</td>
+        </tr>
+        <tr>
+            <td>  5000 wala </td>
+            <td>1Pce </td>
+            <td>15000</td>
+            <td>13500</td>
+            <td>1500</td>
+            <td><input type="number" name="qty" min="0" value="0" data-rate="1500" onchange="calculateTotals()"></td>
+            <td class="net-price">0.00</td>
+        </tr>
+        <tr>
+            <td>10000 wala </td>
+            <td>1Pce </td>
+            <td>30000</td>
+            <td>27000</td>
+            <td>3000</td>
+            <td><input type="number" name="qty" min="0" value="0" data-rate="3000" onchange="calculateTotals()"></td>
+            <td class="net-price">0.00</td>
+        </tr>
+            </tbody>
+        </table>
+        <p class="totals">Total Quantity: <span id="total-qty">0</span></p>
+        <p class="totals">Total Net Payable: ₹<span id="total-price">0.00</span></p>
+        <button type="submit" id="submit-btn">Submit Order</button>
+    </form>
+
+    <script>
+        function calculateTotals() {
+            let qtyInputs = document.querySelectorAll("input[name='qty']");
+            let totalQty = 0;
+            let totalPrice = 0;
+            qtyInputs.forEach((input, index) => {
+                let qty = parseInt(input.value) || 0;
+                let rate = parseFloat(input.getAttribute("data-rate"));
+                let net = qty * rate;
+                totalQty += qty;
+                totalPrice += net;
+                document.getElementsByClassName("net-price")[index].innerText = net.toFixed(2);
+            });
+            document.getElementById("total-qty").innerText = totalQty;
+            document.getElementById("total-price").innerText = totalPrice.toFixed(2);
+        }
+
+        document.getElementById("order-form").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            // Get customer details
+            let customerName = document.querySelector("input[name='customer_name']").value;
+            let phoneNumber = document.querySelector("input[name='phone_number']").value;
+            let address = document.querySelector("textarea[name='address']").value;
+
+            let rows = document.querySelectorAll("tbody tr");
+            let orders = [];
+
+            // Add customer details to each order item
+            rows.forEach(row => {
+                let qty = parseInt(row.querySelector("input[name='qty']").value) || 0;
+                if (qty > 0) {
+                    let cells = row.querySelectorAll("td");
+                    orders.push({
+                        "Customer Name": customerName, // Added customer name
+                        "Phone Number": phoneNumber, // Added phone number
+                        "Address": address,           // Added address
+                        "Product Name": cells[0].innerText,
+                        "Content": cells[1].innerText,
+                        "Rate": cells[2].innerText,
+                        "Discount": cells[3].innerText,
+                        "Final Rate": cells[4].innerText,
+                        "Quantity": qty,
+                        "Net Price": cells[6].innerText
+                    });
+                }
+            });
+
+            // If no items are selected but customer details are entered, you might still want to submit them.
+            // This ensures customer details are sent even if only contact info is provided.
+            if (orders.length === 0 && (customerName || phoneNumber || address)) {
+                 orders.push({
+                    "Customer Name": customerName,
+                    "Phone Number": phoneNumber,
+                    "Address": address,
+                    "Product Name": "No items ordered", // Placeholder for no product selection
+                    "Content": "",
+                    "Rate": "",
+                    "Discount": "",
+                    "Final Rate": "",
+                    "Quantity": 0,
+                    "Net Price": 0
+                 });
+            }
+
+
+            if (orders.length > 0) {
+                fetch("https://sheetdb.io/api/v1/klmrgfuhc1yu7", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ data: orders })
+                }).then(response => {
+                    if (response.ok) {
+                        alert("Order submitted successfully!");
+                        document.getElementById("order-form").reset();
+                        calculateTotals();
+                    } else {
+                        // Attempt to read error message from response
+                        response.json().then(errorData => {
+                            alert("Failed to submit order. Error: " + (errorData.message || "Unknown error. Check console."));
+                            console.error("SheetDB Error:", errorData);
+                        }).catch(() => {
+                            alert("Failed to submit order. Server responded with an error, but no specific message.");
+                        });
+                    }
+                }).catch(error => {
+                    console.error("Error submitting order:", error);
+                    alert("An error occurred while submitting the order. Please check your internet connection.");
+                });
+            } else {
+                alert("Please fill in customer details and/or add at least one item to your order.");
+            }
+        });
+
+        // Initialize totals on page load
+        calculateTotals();
+    </script>
+</body>
+</html>
